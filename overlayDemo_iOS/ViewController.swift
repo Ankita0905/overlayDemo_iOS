@@ -7,14 +7,86 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,CLLocationManagerDelegate {
+    
+    var locationManager = CLLocationManager()
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    let places=Place.getPlaces()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        
+        locationManager.delegate=self
+        locationManager.desiredAccuracy=kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        addAnnotation()
+        addPolyLine()
+    }
+    
+    func addAnnotation()  {
+        mapView.delegate=self
+        mapView.addAnnotations(places)
+        
+        let overlays=places.map { (MKCircle(center: $0.coordinate, radius: 100000))
+        }
+
+        mapView.addOverlays(overlays)
+    }
+    
+    func addPolyLine()
+    {
+        let locations=places.map{$0.coordinate}
+        let polyLine=MKPolyline(coordinates: locations, count: locations.count)
+        mapView.addOverlay(polyLine)
     }
 
 
 }
 
+extension ViewController: MKMapViewDelegate
+{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation
+        {
+            return nil
+        }
+        else
+        {
+            let annotationView=mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
+            annotationView.image=UIImage(named: "ic_place")
+            return annotationView
+        }
+    }
+    
+    //this function is need to add the overlays
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKCircle
+        {
+        let rendrer=MKCircleRenderer(overlay: overlay)
+        rendrer.fillColor=UIColor.black.withAlphaComponent(0.5)
+        rendrer.strokeColor=UIColor.green
+        rendrer.lineWidth=2
+        return rendrer
+        }
+        else if overlay is MKPolyline
+        {
+            let rendrer=MKPolylineRenderer(overlay: overlay)
+            rendrer.strokeColor=UIColor.red
+            rendrer.lineWidth=3
+            return rendrer
+
+        }
+        return MKOverlayRenderer()
+    }
+    
+
+}
