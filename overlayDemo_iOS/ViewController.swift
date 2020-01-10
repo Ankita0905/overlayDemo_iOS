@@ -30,6 +30,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         addAnnotation()
         addPolyLine()
+        addPolygons()
     }
     
     func addAnnotation()  {
@@ -47,6 +48,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let locations=places.map{$0.coordinate}
         let polyLine=MKPolyline(coordinates: locations, count: locations.count)
         mapView.addOverlay(polyLine)
+    }
+    
+    func addPolygons()
+    {
+        let locations=places.map{$0.coordinate}
+               let polygon=MKPolygon(coordinates: locations, count: locations.count)
+               mapView.addOverlay(polygon)
     }
 
 
@@ -84,6 +92,15 @@ extension ViewController: MKMapViewDelegate
             rendrer.lineWidth=3
             return rendrer
 
+        }
+        
+        else if overlay is MKPolygon
+        {
+            let rendrer=MKPolygonRenderer(overlay: overlay)
+            rendrer.strokeColor=UIColor.blue
+            rendrer.fillColor=UIColor.orange.withAlphaComponent(0.5)
+            rendrer.lineWidth=3
+            return rendrer
         }
         return MKOverlayRenderer()
     }
