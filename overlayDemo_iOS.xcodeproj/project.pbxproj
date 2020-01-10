@@ -13,6 +13,8 @@
 		E083083023C912B600A0A9C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E083082E23C912B600A0A9C5 /* Main.storyboard */; };
 		E083083223C912B800A0A9C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E083083123C912B800A0A9C5 /* Assets.xcassets */; };
 		E083083523C912B800A0A9C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E083083323C912B800A0A9C5 /* LaunchScreen.storyboard */; };
+		E083083D23C9130400A0A9C5 /* Places.plist in Resources */ = {isa = PBXBuildFile; fileRef = E083083C23C9130400A0A9C5 /* Places.plist */; };
+		E083083F23C9132B00A0A9C5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E083083E23C9132B00A0A9C5 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		E083083123C912B800A0A9C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E083083423C912B800A0A9C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E083083623C912B800A0A9C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E083083C23C9130400A0A9C5 /* Places.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Places.plist; sourceTree = "<group>"; };
+		E083083E23C9132B00A0A9C5 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 				E083082E23C912B600A0A9C5 /* Main.storyboard */,
 				E083083123C912B800A0A9C5 /* Assets.xcassets */,
 				E083083323C912B800A0A9C5 /* LaunchScreen.storyboard */,
+				E083083E23C9132B00A0A9C5 /* Place.swift */,
 				E083083623C912B800A0A9C5 /* Info.plist */,
+				E083083C23C9130400A0A9C5 /* Places.plist */,
 			);
 			path = overlayDemo_iOS;
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			files = (
 				E083083523C912B800A0A9C5 /* LaunchScreen.storyboard in Resources */,
 				E083083223C912B800A0A9C5 /* Assets.xcassets in Resources */,
+				E083083D23C9130400A0A9C5 /* Places.plist in Resources */,
 				E083083023C912B600A0A9C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +148,7 @@
 				E083082D23C912B600A0A9C5 /* ViewController.swift in Sources */,
 				E083082923C912B600A0A9C5 /* AppDelegate.swift in Sources */,
 				E083082B23C912B600A0A9C5 /* SceneDelegate.swift in Sources */,
+				E083083F23C9132B00A0A9C5 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
